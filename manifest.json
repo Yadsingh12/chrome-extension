@@ -1,19 +1,32 @@
 {
-    "manifest_version": 3,
-    "name": "Text Selector",
-    "version": "1.0",
-    "permissions": ["storage", "activeTab", "scripting"],
-    "background": {
-        "service_worker": "background.js"
-    },
-    "action": {
-        "default_popup": "popup.html",
-        "default_icon": "icon.png"
-    },
-    "content_scripts": [
-        {
-            "matches": ["<all_urls>"],
-            "js": ["content.js"]
-        }
-    ]
+  "manifest_version": 3,
+  "name": "Text Selector",
+  "version": "1.0",
+  "permissions": ["activeTab", "scripting", "sidePanel"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_icon": "jesus.jpg",
+    "default_title": "Click to open"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["panel.html"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "side_panel": {
+    "default_path": "panel.html",
+    "openPanelOnActionClick": true
+  }
 }
